@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="projeto.css">
+    <link rel="script" href="funcoes.js">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+    <section>
+        <div class="container">
+            <div class="carousel">
+                <input type="radio" name="slides" checked="checked" id="slide-1" onclick="votar()">
+                <input type="radio" name="slides" id="slide-2" onclick="votar()">
+                <input type="radio" name="slides" id="slide-3" onclick="">
+                <input type="radio" name="slides" id="slide-4">
+                <input type="radio" name="slides" id="slide-5">
+                <input type="radio" name="slides" id="slide-6">
+                <ul class="carousel__slides">
+                    <li class="carousel__slide">
+                        <figure>
+                            <div>
+                                <img src="https://picsum.photos/id/1041/800/450" alt="">
+                            </div>
+                            <figcaption>
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                                <span class="credit">Photo: Tim Marshall</span>
+                            </figcaption>
+                        </figure>
+                    </li>
+                    <li class="carousel__slide">
+                        <figure>
+                            <div>
+                                <img src="https://picsum.photos/id/1043/800/450" alt="">
+                            </div>
+                            <figcaption>
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                                <span class="credit">Photo: Christian Joudrey</span>
+                            </figcaption>
+                        </figure>
+                    </li>
+                    <li class="carousel__slide">
+                        <figure>
+                            <div>
+                                <img src="https://picsum.photos/id/1044/800/450" alt="">
+                            </div>
+                            <figcaption>
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                                <span class="credit">Photo: Steve Carter</span>
+                            </figcaption>
+                        </figure>
+                    </li>
+                    <li class="carousel__slide">
+                        <figure>
+                            <div>
+                                <img src="https://picsum.photos/id/1045/800/450" alt="">
+                            </div>
+                            <figcaption>
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                                <span class="credit">Photo: Aleksandra Boguslawska</span>
+                            </figcaption>
+                        </figure>
+                    </li>
+                    <li class="carousel__slide">
+                        <figure>
+                            <div>
+                                <img src="https://picsum.photos/id/1049/800/450" alt="">
+                            </div>
+                            <figcaption>
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                                <span class="credit">Photo: Rosan Harmens</span>
+                            </figcaption>
+                        </figure>
+                    </li>
+                    <li class="carousel__slide">
+                        <figure>
+                            <div>
+                                <img src="https://picsum.photos/id/1052/800/450" alt="">
+                            </div>
+                            <figcaption>
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                                <span class="credit">Photo: Annie Spratt</span>
+                            </figcaption>
+                        </figure>
+                    </li>
+                </ul>
+                <ul class="carousel__thumbnails">
+                    <li>
+                        <label for="slide-1"><img src="https://picsum.photos/id/1041/150/150" alt=""></label>
+                    </li>
+                    <li>
+                        <label for="slide-2"><img src="https://picsum.photos/id/1043/150/150" alt=""></label>
+                    </li>
+                    <li>
+                        <label for="slide-3"><img src="https://picsum.photos/id/1044/150/150" alt=""></label>
+                    </li>
+                    <li>
+                        <label for="slide-4"><img src="https://picsum.photos/id/1045/150/150" alt=""></label>
+                    </li>
+                    <li>
+                        <label for="slide-5"><img src="https://picsum.photos/id/1049/150/150" alt=""></label>
+                    </li>
+                    <li>
+                        <label for="slide-6"><img src="https://picsum.photos/id/1052/150/150" alt=""></label>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    <br>
+    <button onclick="abrir()">abrir</button>
+    <div class="box" id="box" >
+        <ol>
+            <li>oi</li>
+            <li>ola</li>
+            <li>nada</li>
+            <li>a</li>
+            <li>dizer</li>
+        </ol>
+    </div>
+    <script>
+        function abrir() {
+            
+            box.style.display = "flex"
+            
+            setInterval(() => {
+                box.style.display = "none"
+            }, 2000);
+        }
+    </script>
+    <section class="divGrafico">
+        <input id="ipt_tipoEscola" type="text" placeholder="onde você da aulas?">
+        <button onclick="testar()">
+            testar
+        </button>
+        <div class="" id="div_testeObjeto">
+
+        </div>
+
+</section>
+<script>
+    var objeto_prof_mediotec = {
+        soft_skils: ['resiliência', 'didática dinâmica', 'bom humor'],
+        hard_skils: ['bancos de dados relacionais', 'poo', 'protocolo ip', 'desenvolvimento web', 'programação mobile'],
+        nivel_formacao_min: ['bacharelado', 'tecnologo']
+    }
+
+    function testar() {
+        div_testeObjeto.innerHTML = ''
+        var tipoEscola = ipt_tipoEscola.value.toLowerCase();
+        //ipt_tipoEscola.value = tipoEscola.toLowerCase();
+
+        if (tipoEscola == 'if') {
+            div_testeObjeto.innerHTML += `Você para dar aulas nessa instituição deve possuir essa softSkil ${objeto_prof_mediotec.hard_skils[0]}`
+            div_testeObjeto.innerHTML += `<img src="https://blog.saseducacao.com.br/wp-content/uploads/2021/01/shutterstock_1126036289-scaled.jpg" style="height: 60px;">`
+        } else {
+            div_testeObjeto.innerHTML = `não reconheço essa instituição`
+        }
+    }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="projeto.css">
+    <link rel="script" href="funcoes.js">
+
+
+
+    <title>educatioNow.projeto</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+    <header class="header">
+
+        <ul class="ul">
+            <li><a class="titulo" href="index.html">
+                    <h1>educatioNow</h1>
+                </a></li>
+            <li> <a href="./desenvolvedor.html">Desenvolvedor</a></li>
+            <li><a href="./cases.html">Cases</a></li>
+            <li><a class="btn-login" href="login.html">Login</a></li>
+        </ul>
+
+    </header>
+
+    <div class="conteiner">
+
+        
+
+        <div class="divGrafico">
+
+
+            <div class="labelChart">
+                <div class="grafico">
+                    <canvas id="testeChart"></canvas>
+                </div>
+                <div>
+                    <!-- <select name="IDEs" id=""> -->
+                       
+                        <img  style="height: 45px;"
+                            src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Visual_Studio_Code_1.35_icon.svg/2048px-Visual_Studio_Code_1.35_icon.svg.png" onclick="votar(100)"
+                            id="VS code" onload="obterDadosGrafico('VS code')">Vs Code
+                        </img src="">
+                        <img  style="height: 45px;" 
+                            src="https://pbs.twimg.com/profile_images/1646938847576739841/vqw4Nmfx_400x400.jpg" onclick="votar(101)"
+                             id="Android Studio" onload="obterDadosGrafico('Android Studio')">Android Studio
+                        </img src="">
+                        <img  style="height: 45px;"
+                            src=" https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRcGUAp1Cly6K_LGqA8DaV_Mre-wXHanXFceCSw8WJxoaDmViTo2km29PHv0ENWGJsJDOk&usqp=CAU" onclick="votar(102)" 
+                            id="JetBrains" onload="obterDadosGrafico('JetBrains')">JetBrains
+                        </img src="">
+                    <!-- </select> -->
+                
+                </div>
+                <h3>Por que usar um editor de código fonte?</h3>
+                <span>IDEs ajudam os desenvolvedores a programar novas aplicações de forma rápida, já que os vários
+                    utilitários não precisam ser ajustados e integrados manualmente durante a configuração. Os
+                    desenvolvedores também não precisam passar horas aprendendo a usar cada uma das diferentes
+                    ferramentas, porque cada utilitário está localizado no mesmo workbench. Isso é especialmente útil
+                    quando os desenvolvedores são novos no projeto. Eles podem contar com o IDE para se atualizar em
+                    relação às ferramentas e fluxos de trabalho da equipe. Na verdade, o objetivo da maior parte das
+                    funcionalidades é economizar tempo: o preenchimento inteligente e a geração automática de código,
+                    por exemplo, eliminam a necessidade de digitar sequências inteiras.</span>
+            </div>
+
+
+        </div>
+       
+
+    </div>
+
+</body>
+
+
+</html>
+<script>
+  function votar(ideID) {
+//Recupere o valor da nova input pelo nome do id
+// Agora vá para o método fetch logo abaixo
+var vscodeVar = document.getElementById('VS code');
+var jetbrainsVar = document.getElementById('Android Studio');
+var androidstudioVar = document.getElementById('JetBrains');
+// Enviando o valor da nova input
+fetch("/medidas/votarIde", {
+    method: "PUT",
+    headers: {
+        "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+        // crie um atributo que recebe o valor recuperado aqui
+        // Agora vá para o arquivo routes/usuario.js
+        vscodeServer: vscodeVar,
+        jetbrainsServer: jetbrainsVar,
+        androidstudioServer: androidstudioVar
+    })
+})
+}
+</script>
+<script>
+
+    window.onload = obterDadosGrafico('Vs code','JetBrains','Android Studio')
+    {console.log('exibindo o grafico')}
+let dadosGrafico = [];
+
+function obterDadosGrafico(nomeIde,nomeIde,nomeIde) {
+
+
+fetch(`/medidas/ultimasmedidas/${nomeIde}`, { cache: 'no-store' }).then(function (response) {
+    if (response.ok) {
+        response.json().then(function (resposta) {
+            console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+            resposta.reverse();
+            dadosGrafico.push(resposta)
+
+            plotarGrafico(resposta, nomeIde);
+        });
+    } else {
+        console.error('Nenhum dado encontrado ou erro na API');
+    }
+})
+    .catch(function (error) {
+        console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+    });
+}
+
+function plotarGrafico(resposta, nomeIde) {
+console.log('iniciando plotagem do gráfico...');
+
+if( nomeIde != null){
+    const teste = document.getElementById('testeChart');
+    new Chart(teste, {
+        type: 'bar',
+        data: {
+            labels: ['Vs Code', 'Android studio', 'JetBrains'],
+            datasets: [{
+                label: "IDEs mais populares em 2023",
+                data: [resposta[2].votos,resposta[1].votos,resposta[0].votos],
+                borderWidth: 1
+            }]
+        }
+    })
+}
+   
+}
+</script>

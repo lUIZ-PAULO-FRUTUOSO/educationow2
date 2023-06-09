@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    
+    <script src="./funcoes.js"></script>
+    
+    <title>cadastro</title>
+</head>
+<body>
+      
+        <div class="header">
+            <nav>
+                <ul class="ul">
+                    <li><a class="titulo" href="index.html"> <h1>educatioNow</h1> </a></li>
+                    <li> <a href="./desenvolvedor.html">Desenvolvedor</a></li>
+                    
+                </ul>
+              </nav>
+          </div>
+    
+        <div class="conteiner_login">
+
+            <div class="alerta_erro">
+                <div class="card_erro" id="cardErro">
+                    <span id="mensagem_erro"></span>
+                </div>
+            </div>
+
+            <div class="form" method="">
+              <p class="form-title">Cadastre-se</p>
+                <div class="input-container">
+                    <input id="nome_input" placeholder="Nome" type="text">
+                </div>
+                <div>
+                    <select class="input-container" name="cargo" id="select_cargo">
+                        <option disabled selected value=""><span>Cargo</span></option>
+                        <option value="professor_univ">Professor Universitário</option>
+                        <option value="professor_medio_tec">Professor de nível médio/Técnico</option>
+                        <option value="analista_jr">Analista Jr </option>
+                        <option value="analista_pl">Analista Pl</option>
+                        <option value="analista_sr">Analista Sr</option>
+                    </select>
+                   </div>
+                <div class="input-container">
+                    <input id="email_input" placeholder="Email" type="text">
+                   </div>
+                <div class="input-container">
+                 <input id="senha_input" placeholder="Senha" type="password">
+                </div>
+                <div class="input-container">
+                    <input id="confirmacao_senha_input" placeholder="Confirme sua senha" type="password">
+                   </div>
+                <button class="submit"  onclick="cadastrar()">
+               Enviar
+             </button>
+        
+             
+            </div>
+       
+        </div>
+      
+
+</body>
+</html>
+<script>
+     function cadastrar() {
+
+          
+
+        //Recupere o valor da nova input pelo nome do id
+        // Agora vá para o método fetch logo abaixo
+        var nomeVar = nome_input.value;
+        var emailVar = email_input.value;
+        var senhaVar = senha_input.value;
+        var confirmacaoSenhaVar = confirmacao_senha_input.value;
+
+        if (nomeVar == "" || emailVar == "" || senhaVar == "" || confirmacaoSenhaVar == "") {
+           alert('(Mensagem de erro para todos os campos em branco)')
+          
+            return false;
+        }
+        else {
+            console.log('campos ok')
+        }
+
+        // Enviando o valor da nova input
+        fetch("/usuarios/cadastrar", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                // crie um atributo que recebe o valor recuperado aqui
+                // Agora vá para o arquivo routes/usuario.js
+                nomeServer: nomeVar,
+                emailServer: emailVar,
+                senhaServer: senhaVar
+            })
+        }).then(function (resposta) {
+
+            console.log("resposta: ", resposta);
+
+            if (resposta.ok) {
+               
+
+                
+                window.location.href = 'login.html'
+
+             
+            } else {
+                throw ("Houve um erro ao tentar realizar o cadastro!");
+            }
+        }).catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+            
+        });
+
+        return false;
+    }
+
+    
+
+
+
+</script>

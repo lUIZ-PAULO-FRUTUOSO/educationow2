@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>educatioNow.projeto</title>
+   
+</head>
+
+<body>
+
+    <header class="header">
+        
+            <ul class="ul">
+                <li><a class="titulo" href="index.html"> <h1>educatioNow</h1> </a></li>
+                <li> <a href="./desenvolvedor.html">Desenvolvedor</a></li>
+                
+            </ul>
+        
+    </header>
+    
+    
+    <div class="conteiner_login">
+     <form class="form">
+       <p class="form-title">login</p>
+        <div class="input-container">
+          <input id="email_input" placeholder="email" type="email">
+         
+      </div>
+      <div class="input-container">
+          <input id="senha_input" placeholder="Enter password" type="password">
+ 
+         
+        </div>
+         <button id="btnLogin" class="submit" type="submit">
+        entar
+      </button>
+ 
+      <p class="signup-link">
+        Ainda não é <i>educatioNow</i> ? 
+        <a href="./cadastro.html">Cadastre-se</a>
+      </p>
+   </form>
+
+ </div>
+ 
+
+   
+
+</body>
+
+</html>
+<script>
+
+
+const botao = document.querySelector('#btnLogin')
+
+botao.addEventListener('click', (e)=>{
+    e.preventDefault()
+    entrar()
+})
+
+  function entrar() {
+      
+
+      var emailVar = email_input.value;
+      var senhaVar = senha_input.value;
+
+      if (emailVar == "" || senhaVar == "") {
+          alert('Mensagem de erro para todos os campos em branco');
+          return false;
+      }else{
+       console.log('campos preenchidos')
+      }
+      
+
+      console.log("FORM LOGIN: ", emailVar);
+      console.log("FORM SENHA: ", senhaVar);
+
+      fetch("/usuarios/entrar", {
+          method: "POST",
+          headers: {
+              "Content-Type": "application/json"
+          },
+          body: JSON.stringify({
+              emailServer: emailVar,
+              senhaServer: senhaVar
+          })
+      }).then(function (resposta) {
+          console.log("ESTOU NO THEN DO entrar()!")
+
+          if (resposta.ok) {
+              console.log(resposta);
+
+              resposta.json().then(json => {
+                  console.log(json);
+                  console.log(JSON.stringify(json));
+
+                  sessionStorage.EMAIL_USUARIO = json.email;
+                  sessionStorage.NOME_USUARIO = json.nome;
+                  sessionStorage.ID = json.id;
+
+                
+                      window.location = "./projeto.html";
+                
+
+              });
+
+          } else {
+
+              console.log("Houve um erro ao tentar realizar o login!");
+
+              resposta.text().then(texto => {
+                  console.error(texto);
+                  
+                });
+          }
+
+      }).catch(function (erro) {
+          console.log(erro);
+      })
+
+      return false;
+  }
+
+</script>
+
