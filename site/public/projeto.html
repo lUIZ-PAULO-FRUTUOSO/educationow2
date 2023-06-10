@@ -48,10 +48,15 @@
                     <option id="op_androidStudio" value="101">Android Studio</option>
                     <option id="op_jetBrains" value="102">JetBrains</option>
                 </select>
-                <button onclick="votarIde()">
+                <button onclick="votacaoIDE()">
                     votar
                 </button>
                 </div>
+
+
+
+
+
                 <h3>Por que usar um editor de código fonte?</h3>
                 <span>IDEs ajudam os desenvolvedores a programar novas aplicações de forma rápida, já que os vários
                     utilitários não precisam ser ajustados e integrados manualmente durante a configuração. Os
@@ -122,6 +127,8 @@ if( nomeIde != null){
 }
 
 function votacaoIDE(idIde) {
-    
+    var select = document.getElementById('votacaoIDE');
+    var value = select.options[select.selectedIndex].value;
+    alert(value)
 }
 </script>
