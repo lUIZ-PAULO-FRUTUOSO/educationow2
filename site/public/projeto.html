@@ -41,22 +41,16 @@
                     <canvas id="testeChart"></canvas>
                 </div>
                 <div>
-                    <!-- <select name="IDEs" id=""> -->
-                       
-                        <img  style="height: 45px;"
-                            src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Visual_Studio_Code_1.35_icon.svg/2048px-Visual_Studio_Code_1.35_icon.svg.png" onclick="votar(100)"
-                            id="VS code" onload="obterDadosGrafico('VS code')">Vs Code
-                        </img src="">
-                        <img  style="height: 45px;" 
-                            src="https://pbs.twimg.com/profile_images/1646938847576739841/vqw4Nmfx_400x400.jpg" onclick="votar(101)"
-                             id="Android Studio" onload="obterDadosGrafico('Android Studio')">Android Studio
-                        </img src="">
-                        <img  style="height: 45px;"
-                            src=" https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRcGUAp1Cly6K_LGqA8DaV_Mre-wXHanXFceCSw8WJxoaDmViTo2km29PHv0ENWGJsJDOk&usqp=CAU" onclick="votar(102)" 
-                            id="JetBrains" onload="obterDadosGrafico('JetBrains')">JetBrains
-                        </img src="">
-                    <!-- </select> -->
                 
+                <select name="" id="votacaoIDE">
+                    <option disabled selected> escolha sua ide favorita </option>
+                    <option id="op_vsCode" value="100">VS code</option>
+                    <option id="op_androidStudio" value="101">Android Studio</option>
+                    <option id="op_jetBrains" value="102">JetBrains</option>
+                </select>
+                <button onclick="votarIde()">
+                    votar
+                </button>
                 </div>
                 <h3>Por que usar um editor de código fonte?</h3>
                 <span>IDEs ajudam os desenvolvedores a programar novas aplicações de forma rápida, já que os vários
@@ -79,29 +73,7 @@
 
 
 </html>
-<script>
-  function votar(ideID) {
-//Recupere o valor da nova input pelo nome do id
-// Agora vá para o método fetch logo abaixo
-var vscodeVar = document.getElementById('VS code');
-var jetbrainsVar = document.getElementById('Android Studio');
-var androidstudioVar = document.getElementById('JetBrains');
-// Enviando o valor da nova input
-fetch("/medidas/votarIde", {
-    method: "PUT",
-    headers: {
-        "Content-Type": "application/json"
-    },
-    body: JSON.stringify({
-        // crie um atributo que recebe o valor recuperado aqui
-        // Agora vá para o arquivo routes/usuario.js
-        vscodeServer: vscodeVar,
-        jetbrainsServer: jetbrainsVar,
-        androidstudioServer: androidstudioVar
-    })
-})
-}
-</script>
+
 <script>
 
     window.onload = obterDadosGrafico('Vs code','JetBrains','Android Studio')
@@ -111,7 +83,7 @@ let dadosGrafico = [];
 function obterDadosGrafico(nomeIde,nomeIde,nomeIde) {
 
 
-fetch(`/medidas/ultimasmedidas/${nomeIde}`, { cache: 'no-store' }).then(function (response) {
+fetch(`/medidas/ultimas/${nomeIde}`, { cache: 'no-store' }).then(function (response) {
     if (response.ok) {
         response.json().then(function (resposta) {
             console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
@@ -147,5 +119,9 @@ if( nomeIde != null){
     })
 }
    
+}
+
+function votacaoIDE(idIde) {
+    
 }
 </script>
