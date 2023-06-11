@@ -31,7 +31,9 @@
 
     <div class="conteiner">
 
-        
+        <div id="div_sejaBemVindo">
+
+        </div>
 
         <div class="divGrafico">
 
@@ -85,6 +87,19 @@
     {console.log('exibindo o grafico')}
 let dadosGrafico = [];
 
+    window.onload = boasVindas();
+
+function boasVindas(){
+    div_sejaBemVindo.innerHTML = `
+    Seja muito bem vindo a plataforma EDUCATIONOW ${sessionStorage.getItem('NOME_USUARIO')}! 
+    <br>
+    É um enorme prazer tê-lo conosco!
+    `
+    setTimeout(() => {
+        div_sejaBemVindo.innerHTML = ''
+    }, 30000);
+}
+
 function obterDadosGrafico(nomeIde,nomeIde,nomeIde) {
 
 
@@ -128,7 +143,9 @@ if( nomeIde != null){
 
 function votacaoIDE(idIde) {
     var select = document.getElementById('votacaoIDE');
-    var value = select.options[select.selectedIndex].value;
-    alert(value)
+    var idIde = select.options[select.selectedIndex].value;
+    console.log('o id da ide para ser votada é' +idIde)
+
+
 }
 </script>
