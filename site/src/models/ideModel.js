@@ -1,17 +1,10 @@
 var database = require("../database/config")
 
-function listar(){
-    var instrucao = `
-    SELECT * FROM ides;
-    `;
 
-    console.log("executando a instrucao SQL: \n" + instrucao);
-    return database.executar(instrucao);
-}
 
-function cadastrarIde(nomeIde){
+function votarIde(idIde){
     var instrucao = `
-    INSERT INTO ides (nome) VALUES ('${nomeIde}');
+    update ides set votos = votos +1  where id = ${idIde};
     `;
 
     console.log("executando a instrucao SQL: \n " + instrucao)
@@ -19,6 +12,5 @@ function cadastrarIde(nomeIde){
 }
 
 module.exports = {
-    cadastrarIde,
-    listar
+    votarIde
 };

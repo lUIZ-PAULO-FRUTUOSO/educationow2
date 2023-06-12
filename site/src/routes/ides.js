@@ -4,13 +4,11 @@ var router = express.Router();
 var ideController = require("../controllers/ideController");
 
 
-router.post("cadastrarIde", function(req, res){
-    ideController.cadastrar(req, res);
+router.post("/votarIde/:idIde", function(req, res){
+    ideController.votarIde(req, res);
 });
 
-router.get("/listar",function(req, res){
-    ideController.listar(req, res);
-});
+
 
 
 module.exports = router;

@@ -50,7 +50,7 @@
                     <option id="op_androidStudio" value="101">Android Studio</option>
                     <option id="op_jetBrains" value="102">JetBrains</option>
                 </select>
-                <button onclick="votacaoIDE()">
+                <button onclick="votarIde()">
                     votar
                 </button>
                 </div>
@@ -120,13 +120,13 @@ fetch(`/medidas/ultimas/${nomeIde}`, { cache: 'no-store' }).then(function (respo
         console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
     });
 }
-
+var meuChart 
 function plotarGrafico(resposta, nomeIde) {
 console.log('iniciando plotagem do gráfico...');
 
 if( nomeIde != null){
     const teste = document.getElementById('testeChart');
-    new Chart(teste, {
+  meuChart =  new Chart(teste, {
         type: 'bar',
         data: {
             labels: ['Vs Code', 'Android studio', 'JetBrains'],
@@ -141,11 +141,37 @@ if( nomeIde != null){
    
 }
 
-function votacaoIDE(idIde) {
+function votarIde(idIde) {
     var select = document.getElementById('votacaoIDE');
     var idIde = select.options[select.selectedIndex].value;
-    console.log('o id da ide para ser votada é' +idIde)
+    console.log('o id da ide para ser votada é ' +idIde)
+
+
+
+    fetch(`/ides/votarIde/${idIde}`, {
+        method: "POST",
+    }).then(function (resposta) {
+
+        console.log("resposta: ", resposta);
+
+        if (resposta.ok) {
+            console.log("voto atribuido a IDE de id ="+''+idIde)
+            meuChart.destroy();
+            obterDadosGrafico('Vs code','JetBrains','Android Studio')
+          
+        }else {
+            throw ("Houve um erro ao tentar realizar a votação! Código da resposta: " + resposta.status);
+        }
+    }).catch(function (resposta) {
+        console.log(`#ERRO: ${resposta}`);
+        
+    });
+
 
 
 }
+
+
 </script>
+
+
