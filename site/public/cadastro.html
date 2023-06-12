@@ -68,15 +68,17 @@
 </html>
 <script>
      function cadastrar() {
-
-          
-
         //Recupere o valor da nova input pelo nome do id
         // Agora vá para o método fetch logo abaixo
         var nomeVar = nome_input.value;
         var emailVar = email_input.value;
         var senhaVar = senha_input.value;
         var confirmacaoSenhaVar = confirmacao_senha_input.value;
+
+        //recuperando o cargo para ser inserido no banco
+        var select = document.getElementById('select_cargo');
+        var usuario_cargo = select.options[select.selectedIndex].value;
+    console.log('o cargo é' +usuario_cargo)
 
         if (nomeVar == "" || emailVar == "" || senhaVar == "" || confirmacaoSenhaVar == "") {
            alert('(Mensagem de erro para todos os campos em branco)')
@@ -98,7 +100,8 @@
                 // Agora vá para o arquivo routes/usuario.js
                 nomeServer: nomeVar,
                 emailServer: emailVar,
-                senhaServer: senhaVar
+                senhaServer: senhaVar,
+                cargoServer: usuario_cargo
             })
         }).then(function (resposta) {
 

@@ -87,13 +87,11 @@ a {
 
 .sectionPar {
   display: flex;
-  font-size: 18px;
   padding: 5px;
 }
 
 .sectionImpar {
   display: flex;
-  font-size: 18px;
   padding: 5px;
 }
 
@@ -102,6 +100,7 @@ a {
 p {
   padding: 5%;
   text-align: center;
+  font-size: 25px;
 }
 
 .investimentos {
