@@ -35,6 +35,10 @@
 
         </div>
 
+        <div id="div_cargoSkils">
+
+        </div>
+
         <div class="divGrafico">
 
 
@@ -88,6 +92,7 @@
 let dadosGrafico = [];
 
     window.onload = boasVindas();
+    window.onload = cargoSkils();
 
 function boasVindas(){
     div_sejaBemVindo.innerHTML = `
@@ -98,6 +103,24 @@ function boasVindas(){
     setTimeout(() => {
         div_sejaBemVindo.innerHTML = ''
     }, 30000);
+}
+
+function cargoSkils() {
+    var cargo = sessionStorage.getItem('cargo')
+
+    var skils = {
+    soft_skils: ['resiliência', 'didática dinâmica', 'bom humor'],
+    hard_skils: ['bancos de dados relacionais', 'poo', 'protocolo ip', 'desenvolvimento web', 'programação mobile'],
+    nivel_formacao_min: ['bacharelado', 'tecnologo']
+}
+    if (cargo == 'professor_medio_tec') {
+
+        div_cargoSkils.innerHTML += `Professor, você precisa ter essas habilidades ${skils.hard_skils[0]}`
+           
+    }else {
+            console.log('cargo ainda não definido como objeto')
+        }
+    
 }
 
 function obterDadosGrafico(nomeIde,nomeIde,nomeIde) {
@@ -167,7 +190,7 @@ function votarIde(idIde) {
         
     });
 
-
+cargoSkils();
 
 }
 

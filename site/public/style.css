@@ -137,10 +137,18 @@ p {
   border: #BB9549 0.1px solid;
   border-radius: 4px;
 }
-
-.sectionPar .tituloSlides{
+.sectionSlides{
+  display: flex;
+  flex-direction: row;
+}
+.tituloSlides{
+  padding-top: 10px;
   font-size: 35px;
   padding-left: 40%;
+}
+.tituloSlides span{
+  padding: 10%;
+  font-size: 20px;
 }
 .conteiner .sectionPar .slides{
   display: flex;

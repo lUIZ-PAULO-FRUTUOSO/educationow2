@@ -79,6 +79,7 @@
         var select = document.getElementById('select_cargo');
         var usuario_cargo = select.options[select.selectedIndex].value;
     console.log('o cargo é' +usuario_cargo)
+    sessionStorage.cargo = usuario_cargo;
 
         if (nomeVar == "" || emailVar == "" || senhaVar == "" || confirmacaoSenhaVar == "") {
            alert('(Mensagem de erro para todos os campos em branco)')
