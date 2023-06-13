@@ -39,12 +39,10 @@
 
         </div>
 
-        <div class="divGrafico">
-
-
+        <div class="divGraficoIDE">
             <div class="labelChart">
                 <div class="grafico">
-                    <canvas id="testeChart"></canvas>
+                    <canvas id="chartIDE"></canvas>
                 </div>
                 <div>
                 
@@ -59,10 +57,6 @@
                 </button>
                 </div>
 
-
-
-
-
                 <h3>Por que usar um editor de código fonte?</h3>
                 <span>IDEs ajudam os desenvolvedores a programar novas aplicações de forma rápida, já que os vários
                     utilitários não precisam ser ajustados e integrados manualmente durante a configuração. Os
@@ -74,15 +68,10 @@
                     por exemplo, eliminam a necessidade de digitar sequências inteiras.</span>
             </div>
 
-
         </div>
-       
-
+    
     </div>
-
 </body>
-
-
 </html>
 
 <script>
@@ -102,7 +91,7 @@ function boasVindas(){
     `
     setTimeout(() => {
         div_sejaBemVindo.innerHTML = ''
-    }, 30000);
+    }, 10000);
 }
 
 function cargoSkils() {
@@ -148,7 +137,7 @@ function plotarGrafico(resposta, nomeIde) {
 console.log('iniciando plotagem do gráfico...');
 
 if( nomeIde != null){
-    const teste = document.getElementById('testeChart');
+    const teste = document.getElementById('chartIDE');
   meuChart =  new Chart(teste, {
         type: 'bar',
         data: {
