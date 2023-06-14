@@ -1,12 +1,12 @@
 .grafico{
-    width: 50%;
+    width: 1000px;
 
 }
 .divGrafico{
 flex-direction: row;
 display: flex;
 align-items: center;
-border: 1.5px solid #BB9549;
+
 
 
 }
@@ -15,7 +15,7 @@ border: 1.5px solid #BB9549;
     flex-direction: column;
     align-items: center;
     font-family:'Times New Roman', Times, serif;
-    font-size: medium;
-    padding: 2%;
+  padding-left: 2%;
+  width: fit-content;
 
 }

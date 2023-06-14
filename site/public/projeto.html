@@ -39,41 +39,44 @@
 
         </div>
 
-        <div class="divGraficoIDE">
-            <div class="labelChart">
-                <div class="grafico">
-                    <canvas id="chartIDE"></canvas>
-                </div>
-                <div>
-                
-                <select name="" id="votacaoIDE">
-                    <option disabled selected> escolha sua ide favorita </option>
-                    <option id="op_vsCode" value="100">VS code</option>
-                    <option id="op_androidStudio" value="101">Android Studio</option>
-                    <option id="op_jetBrains" value="102">JetBrains</option>
-                </select>
-                <button onclick="votarIde()">
-                    votar
-                </button>
-                </div>
-
-                <h3>Por que usar um editor de código fonte?</h3>
-                <span>IDEs ajudam os desenvolvedores a programar novas aplicações de forma rápida, já que os vários
-                    utilitários não precisam ser ajustados e integrados manualmente durante a configuração. Os
-                    desenvolvedores também não precisam passar horas aprendendo a usar cada uma das diferentes
-                    ferramentas, porque cada utilitário está localizado no mesmo workbench. Isso é especialmente útil
-                    quando os desenvolvedores são novos no projeto. Eles podem contar com o IDE para se atualizar em
-                    relação às ferramentas e fluxos de trabalho da equipe. Na verdade, o objetivo da maior parte das
-                    funcionalidades é economizar tempo: o preenchimento inteligente e a geração automática de código,
-                    por exemplo, eliminam a necessidade de digitar sequências inteiras.</span>
+        <div class="divGrafico">
+            <div class="grafico">
+                <div class="labelChart">
+               <span class="textosMedios">
+                   <h3>Por que usar um editor de código fonte?</h3>
+                   IDEs ajudam os desenvolvedores a programar novas aplicações de forma rápida, já que os vários
+                   utilitários não precisam ser ajustados e integrados manualmente durante a configuração. Os
+                   desenvolvedores também não precisam passar horas aprendendo a usar cada uma das diferentes
+                   ferramentas, porque cada utilitário está localizado no mesmo workbench. Isso é especialmente útil
+                   quando os desenvolvedores são novos no projeto. Eles podem contar com o IDE para se atualizar em
+                   relação às ferramentas e fluxos de trabalho da equipe. Na verdade, o objetivo da maior parte das
+                   funcionalidades é economizar tempo: o preenchimento inteligente e a geração automática de código,
+                   por exemplo, eliminam a necessidade de digitar sequências inteiras.
+               </span>
+               </div> 
+                <canvas id="chartIDE"></canvas>
             </div>
-
+            <div id="divVotacao">
+                <span class="textosMedios">
+                    Os editores mais populares entre a comunidade Dev <b>educatioNow</b> são o VS Code <img src="" alt="">
+                </span>
+            <select name="" id="votacaoIDE">
+                <option disabled selected> Escolha sua ide favorita </option>
+                <option id="op_vsCode" value="100">VS code</option>
+                <option id="op_androidStudio" value="101">Android Studio</option>
+                <option id="op_jetBrains" value="102">JetBrains</option>
+            </select>
+            <button class="btn-ganharMais" onclick="votarIde()">
+                votar
+            </button>
+            </div>
+            </div>
+            
         </div>
-    
     </div>
-</body>
-</html>
-
+    </body>
+    </html>
+    
 <script>
 
     window.onload = obterDadosGrafico('Vs code','JetBrains','Android Studio')
