@@ -1,16 +1,21 @@
 <!DOCTYPE html>
 <html lang="pt">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <link rel="stylesheet" href="style.css">
- 
-
-    <title>educatioNow</title>
-</head>
-<body>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <link rel="stylesheet" href="style.css">
+        
+        
+        <title>educatioNow</title>
+    </head>
+    <body>
+    <div class="modal" id="modal_formacao_continuada">
+     <div class="content" id="content_formacao_continuada">
+        
+     </div>
+    </div>
     <div class="header">
         
             <ul class="ul">
@@ -20,7 +25,7 @@
             </ul>
          
       </div>
-         <div class="conteiner">
+         <div  id="conteiner" class="conteiner">
             
             
               <section class="sectionPar">
@@ -48,36 +53,56 @@
                 </div>
                 
             
-            <section class="sectionSlides">
-
-                <div class="slides" id="slide-1">
-                    <img src="https://www.educacao.df.gov.br/wp-conteudo/uploads/2019/10/ao-mestre-com-carinho.jpg">
-
-                    <figcaption>
-                        Ao mestre com carinho
-                    </figcaption>
-                    
-                </div>
-                <div class="slides" id="slide-2">
-                    <img src="https://c4.wallpaperflare.com/wallpaper/613/675/658/basketball-samuel-l-jackson-coach-carter-wallpaper-preview.jpg">
-                    <figcaption>
-                        Ao mestre com carinho
-                    </figcaption>
-                </div>
-                <div class="slides" id="slide-3">
-                    <img src="https://1.bp.blogspot.com/-Lj6pGjxvaIc/XweUdvWufVI/AAAAAAAA4UA/jrgsKbRs-5sjFs5Ehg6Btu7r7mwgwAP1ACK4BGAsYHg/s640/resenha-do-filme-como-estrelas-na-terra.jpg">
-                    <figcaption>
-                        Ao mestre com carinho
-                    </figcaption>
-                </div>
-                <div class="slides" id="slide-3">
-                    <img src="https://1.bp.blogspot.com/-Lj6pGjxvaIc/XweUdvWufVI/AAAAAAAA4UA/jrgsKbRs-5sjFs5Ehg6Btu7r7mwgwAP1ACK4BGAsYHg/s640/resenha-do-filme-como-estrelas-na-terra.jpg">
-                    <figcaption>
-                        Ao mestre com carinho
-                    </figcaption>
-                </div>
-
+            <section id="sectionSlides" class="sectionSlides">
+                
             </section>
+
+<script>
+
+    window.onload=exibirMidias();
+
+
+    
+    function exibirMidias() {
+    var educacaoMidia = [{
+        titulo: 'Ao mestre com carinho',
+        url: 'https://www.educacao.df.gov.br/wp-conteudo/uploads/2019/10/ao-mestre-com-carinho.jpg',
+        href: 'https://www.imdb.com/title/tt0062376/'
+    },
+    {
+        titulo:'Coach Carter',
+        url:'https://c4.wallpaperflare.com/wallpaper/613/675/658/basketball-samuel-l-jackson-coach-carter-wallpaper-preview.jpg',
+        href:'https://www.imdb.com/title/tt0393162/'
+    },
+    {
+        titulo:'Como estrelas na Terra',
+        url:'https://1.bp.blogspot.com/-Lj6pGjxvaIc/XweUdvWufVI/AAAAAAAA4UA/jrgsKbRs-5sjFs5Ehg6Btu7r7mwgwAP1ACK4BGAsYHg/s640/resenha-do-filme-como-estrelas-na-terra.jpg',
+        href:'https://www.imdb.com/title/tt0986264/'
+    },
+    {
+        titulo:'Albus Dumbledore',
+        url:'https://c4.wallpaperflare.com/wallpaper/844/91/639/harry-potter-harry-potter-and-the-goblet-of-fire-albus-dumbledore-hd-wallpaper-preview.jpg',
+        href:'https://www.imdb.com/title/tt0241527/'
+    }
+    ]
+    for (let index = 0; index < educacaoMidia.length; index++) {
+       
+        sectionSlides.innerHTML += `
+        <a href="${educacaoMidia[index].href}" class="slides" id="slide-3">
+                    <img src="${educacaoMidia[index].url}">
+                    <figcaption>
+                       ${educacaoMidia[index].titulo}
+                    </figcaption>
+                </a>
+        `
+        
+    }
+}
+
+    
+</script>
+
+
 
               <section class="sectionImpar">
                   <div>
@@ -117,47 +142,43 @@
                        <br>
                        Outro ponto que deve ser considerado na formação continuada é a evolução salarial. Todos nós sabemos que é importante que os professores se atualizem por conta de suas aulas, porém é fundamental pensar em como ganhar mais e assim ter ainda mais alegria em ensinar!
                        <br>
-                       O professor Raimundo quer saber qual é o   <input id="ipt_valor_aula" placeholder=" valor da sua hora aula?"> <button class="btn-ganharMais" onclick="ganharMais()"> Vamos ver qual é o recado dele para você?</button cl>
+                       O professor Raimundo quer saber qual é o   <input id="ipt_valor_aula" placeholder=" valor da sua hora aula?"> <button class="btn-ganharMais" onclick="ganharMais()"> Vamos ver qual é o recado dele para você?</button>
                         </p>
                        
                     </div>
     
-                   <!-- <div class="modal">
-                    <div class="content" id="formação_continuada">
-                        testando modal
-                    </div>
-                   </div> -->
                 
               
             <script>
-                // const switchModal  = ()=>{
-                //     const modal = document.querySelector('.modal')
-                //     const actualStyle = modal.style.display
-                //     if (actualStyle == 'block') {
-                //         modal.style.display = 'none'
-                //     } else {
-                //         modal.style.display = 'block'
-                //     }
-                // }
-                // const btn = document.querySelector('.modalBtn')
-                // btn.addEventListener('click', switchModal)
-                // window.onclick = function(event){
-                //     const modal = document.querySelector('.modal')
-                //     if(event.target == modal){
-                //         switchModal
-                //     }
-                // }
+              
                 function ganharMais () {
+                    
                     var hora_aula = Number(ipt_valor_aula.value)
                     var aula_aumentada = (15/100 * hora_aula) + hora_aula
                     
-                    formacao_continuada.innerHTML += `<p>Professor, dando um passo a mais em sua carreira você poderá ganhar até 15% a mais em sua hora aula! <br>
-                    O valor de ${hora_aula} por aula chegaria a aproximadamente ${aula_aumentada}</p>`
-                    formacao_continuada.innerHTML += `
+                    content_formacao_continuada.innerHTML = `<p>Professor, dando um passo a mais em sua carreira você poderá ganhar até 15% a mais em sua hora aula! <br>
+                    O valor de R$${hora_aula} por aula chegaria a aproximadamente R$${aula_aumentada}</p>`
+                    content_formacao_continuada.innerHTML += `
                     <img style="width: 200px; flex-direction: row;" src="https://1.bp.blogspot.com/-eByHT7b81S8/T3HyHOQ49QI/AAAAAAAABJk/f0rvy83pVmY/s1600/prof.raimundo.jpg">
-        
                     `
-                    }
+                    content_formacao_continuada.innerHTML += `
+                    <br>
+                    <button style="color: gray;" onclick="fecharModal()">Fechar</button>
+                    `
+                    
+                    modal_formacao_continuada.style.display = 'flex'
+                    
+                    
+                    
+                    
+                }
+ function fecharModal() {
+    
+    modal_formacao_continuada.style.display = 'none'
+    
+                    
+}
+                
               </script>
               
          </div>

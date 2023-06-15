@@ -23,7 +23,6 @@
                     <h1>educatioNow</h1>
                 </a></li>
             <li> <a href="./desenvolvedor.html">Desenvolvedor</a></li>
-            <li><a href="./cases.html">Cases</a></li>
             <li><a class="btn-login" href="login.html">Login</a></li>
         </ul>
 
@@ -53,22 +52,22 @@
                    funcionalidades é economizar tempo: o preenchimento inteligente e a geração automática de código,
                    por exemplo, eliminam a necessidade de digitar sequências inteiras.
                </span>
+               <div class="divVotacao" id="divVotacao">
+                   <span class="textosMedios">
+                       Os editores mais populares entre a comunidade Dev <b>educatioNow</b> são o VS Code <img src="" alt="">
+                   </span>
+               <select name="" id="votacaoIDE">
+                   <option disabled selected> Escolha sua ide favorita </option>
+                   <option id="op_vsCode" value="100">VS code</option>
+                   <option id="op_androidStudio" value="101">Android Studio</option>
+                   <option id="op_jetBrains" value="102">JetBrains</option>
+               </select>
+               <button class="btn-ganharMais" onclick="votarIde()">
+                   votar
+               </button>
+               </div>
                </div> 
                 <canvas id="chartIDE"></canvas>
-            </div>
-            <div id="divVotacao">
-                <span class="textosMedios">
-                    Os editores mais populares entre a comunidade Dev <b>educatioNow</b> são o VS Code <img src="" alt="">
-                </span>
-            <select name="" id="votacaoIDE">
-                <option disabled selected> Escolha sua ide favorita </option>
-                <option id="op_vsCode" value="100">VS code</option>
-                <option id="op_androidStudio" value="101">Android Studio</option>
-                <option id="op_jetBrains" value="102">JetBrains</option>
-            </select>
-            <button class="btn-ganharMais" onclick="votarIde()">
-                votar
-            </button>
             </div>
             </div>
             
@@ -84,7 +83,7 @@
 let dadosGrafico = [];
 
     window.onload = boasVindas();
-    window.onload = cargoSkils();
+
 
 function boasVindas(){
     div_sejaBemVindo.innerHTML = `
@@ -97,22 +96,32 @@ function boasVindas(){
     }, 10000);
 }
 
+var contadorSkils = 0;
+
+setInterval (()=>{
+    cargoSkils()
+},10000) 
+
+
 function cargoSkils() {
-    var cargo = sessionStorage.getItem('cargo')
+    // var cargo = sessionStorage.getItem('cargo')
+    
+   var  hard_skils = ['bancos de dados relacionais', 'poo', 'protocolo ip', 'desenvolvimento web', 'programação mobile'];
 
     var skils = {
-    soft_skils: ['resiliência', 'didática dinâmica', 'bom humor'],
-    hard_skils: ['bancos de dados relacionais', 'poo', 'protocolo ip', 'desenvolvimento web', 'programação mobile'],
-    nivel_formacao_min: ['bacharelado', 'tecnologo']
-}
-    if (cargo == 'professor_medio_tec') {
+    soft_skils: ['resiliência', 'didática dinâmica', 'bom humor']
+                }
 
-        div_cargoSkils.innerHTML += `Professor, você precisa ter essas habilidades ${skils.hard_skils[0]}`
+
+div_cargoSkils.innerHTML = `Professor, você precisa ter essas habilidades ${hard_skils[contadorSkils]}`
            
-    }else {
-            console.log('cargo ainda não definido como objeto')
-        }
-    
+    contadorSkils++;
+
+    console.log(contadorSkils)
+
+    if (contadorSkils > hard_skils.length-1) {
+        contadorSkils = 0
+    }
 }
 
 function obterDadosGrafico(nomeIde,nomeIde,nomeIde) {

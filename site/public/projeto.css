@@ -3,12 +3,9 @@
 
 }
 .divGrafico{
-flex-direction: row;
+flex-direction: column;
 display: flex;
 align-items: center;
-
-
-
 }
 .labelChart{
     display: flex;
@@ -19,3 +16,12 @@ align-items: center;
   width: fit-content;
 
 }
+.divVotacao{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
+
+/* aplicar estilo a um componente pelo id */
+/* #id_componente */
